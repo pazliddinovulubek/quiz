@@ -16,17 +16,12 @@ function HtmlQuiz() {
     { id: 1, savol: "HTML nima ?" },
     { id: 2, savol: 'HTML strukturasi qanday ?' },
     { id: 3, savol: 'Element nima ?' },
-    { id: 4, savol: 'Element nima ?' },
-    { id: 5, savol: 'Empty element va nested element farqi' },
     { id: 6, savol: 'Tag va attribute farqi' },
-    { id: 7, savol: '<sub> va <sup> elementning vazifasi nima ?' },
     { id: 8, savol: 'HTML da qanday stil beriladi ?' },
-    { id: 9, savol: 'target="_blank" nima uchun ishlatiladi ?' },
     { id: 10, savol: 'Qisqacha jadval strukturasini yozib bering (jadval hosil qilib bering)' },
     { id: 11, savol: 'Necha xil ro’yxat (list) yaratish mumkin va qaysi taglar orqali ?' },
     { id: 12, savol: 'id va class farqi ?' },
     { id: 13, savol: 'Block va inline elementlarning farqi ?' },
-    { id: 14, savol: 'label tegi nima uchun ishlatiladi ?' },
     { id: 15, savol: 'inputning qanday typelarini bilasiz va nima uchun ishlatiladi ?' },
     { id: 16, savol: 'div va span teglarining farqi ?' },
     { id: 17, savol: '“Semantic” elementlar qaysilar ?' },
@@ -49,6 +44,7 @@ function HtmlQuiz() {
     const updated = { ...text, [id]: value };
     setText(updated);
     localStorage.setItem('quiz', JSON.stringify(updated));
+
   };
 
   const sendTelegram = () => {
@@ -89,13 +85,13 @@ function HtmlQuiz() {
     <div className="container">
       <div className='cart-quiz' data-aos="fade-up">
         <h2>Ismingizni kiriting:</h2>
-        <input
+        <input required
           type="text"
           value={name}
           onChange={(e) => {
             setName(e.target.value);
             localStorage.setItem('quizName', e.target.value);
-          }}x
+          }}
           placeholder='Ismingiz...'
         />
       </div>
@@ -107,7 +103,7 @@ function HtmlQuiz() {
           <textarea
             value={text[item.id] || ""}
             onChange={(e) => handleChange(item.id, e.target.value)}
-            placeholder='Javobni yoz..'
+            placeholder='Javobni yoz..' 
           ></textarea>
         </div>
       ))}
